@@ -30,6 +30,7 @@ import { IconModule } from '@coreui/icons-angular';
     ButtonsComponent,
     ButtonGroupsComponent,
     DropdownsComponent,
+
   ],
   imports: [
     CommonModule,

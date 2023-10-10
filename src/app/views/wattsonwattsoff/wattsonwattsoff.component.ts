@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './wattsonwattsoff-charts-data';
+import { MdbCheckboxDirective } from 'mdb-angular-ui-kit/checkbox';
+import { ViewChild} from '@angular/core';
+import { UntypedFormBuilder} from '@angular/forms';
 
 interface IUser {
   name: string;
@@ -22,7 +25,10 @@ interface IUser {
   styleUrls: ['wattsonwattsoff.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartsData: DashboardChartsData) {
+  constructor(
+    private chartsData: DashboardChartsData,
+    private formBuilder: UntypedFormBuilder
+    ) {
   }
 
   public users: IUser[] = [
@@ -124,4 +130,26 @@ export class DashboardComponent implements OnInit {
     this.chartsData.initMainChart(value);
     this.initCharts();
   }
+  formCheck1 = this.formBuilder.group({
+    checkbox1: false,
+    checkbox2: false,
+    checkbox3: false
+  });
+  formRadio1 = new UntypedFormGroup({
+    radio1: new UntypedFormControl('Radio1')
+  });
+
+  setCheckBoxValue(controlName: string) {
+    const prevValue = this.formCheck1.get(controlName)?.value;
+    const value = this.formCheck1.value;
+    value[controlName] = !prevValue;
+    this.formCheck1.setValue(value);
+  }
+
+  setRadioValue(value: string): void {
+    this.formRadio1.setValue({ radio1: value });
+  }
+  
+  @ViewChild(MdbCheckboxDirective, { static: true }) switch!: MdbCheckboxDirective;
 }
+

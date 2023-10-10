@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { MdbCheckboxDirective } from 'mdb-angular-ui-kit/checkbox';
 
 @Component({
   selector: 'app-button-groups',
@@ -7,7 +8,7 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angul
   styleUrls: ['./button-groups.component.scss']
 })
 export class ButtonGroupsComponent {
-
+  
   formCheck1 = this.formBuilder.group({
     checkbox1: false,
     checkbox2: false,
@@ -30,5 +31,11 @@ export class ButtonGroupsComponent {
 
   setRadioValue(value: string): void {
     this.formRadio1.setValue({ radio1: value });
+  }
+  
+  @ViewChild(MdbCheckboxDirective, { static: true }) switch!: MdbCheckboxDirective;
+
+  ngOnInit(): void {
+    this.switch.toggle();
   }
 }
