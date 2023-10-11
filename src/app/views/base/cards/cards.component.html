@@ -27,7 +27,8 @@
         </p>
         <app-docs-example href="components/card">
           <c-card style="width: 18rem;">
-            <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container>
+            <!-- <ng-container *ngTemplateOutlet="imgPlaceholderTemplate"></ng-container> -->
+            <img cCardImg="top" src="./assets/images/angular.jpg">
             <c-card-body>
               <h5 cCardTitle>Card title</h5>
               <p cCardText>
