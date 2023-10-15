@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 export class ChartsComponent {
 
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  // chartnum:number = 1;
+
+  // chartnumcount:any = setInterval(()=>{
+  //   this.chartnum++;
+  // },600000)
 
   chartBarData = {
     labels: [...this.months].slice(0, 7),
@@ -15,7 +20,8 @@ export class ChartsComponent {
       {
         label: 'GitHub Commits',
         backgroundColor: '#f87979',
-        data: [40, 20, 12, 39, 17, 42, 79]
+        data: [40, 20, 12, 39, 17, 42, 65]
+        // data: [40, 20, 12, 39, 17, 42, this.chartnumcount]
       }
     ]
   };

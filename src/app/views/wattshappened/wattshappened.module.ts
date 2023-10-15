@@ -21,6 +21,7 @@ import { DashboardRoutingModule } from './wattshappened-routing.module';
 import { DashboardComponent } from './wattshappened.component';
 
 import { WidgetsModule } from '../widgets/widgets.module';
+import { ChartsModule } from '../charts/charts.module';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { WidgetsModule } from '../widgets/widgets.module';
     ChartjsModule,
     AvatarModule,
     TableModule,
-    WidgetsModule
+    WidgetsModule,
+    ChartsModule
   ],
   declarations: [DashboardComponent]
 })

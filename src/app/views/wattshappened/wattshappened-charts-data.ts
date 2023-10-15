@@ -107,16 +107,16 @@ export class DashboardChartsData {
         label: 'Current',
         ...colors[0]
       },
-      {
-        data: this.mainChart['Data2'],
-        label: 'Previous',
-        ...colors[1]
-      },
-      {
-        data: this.mainChart['Data3'],
-        label: 'BEP',
-        ...colors[2]
-      }
+      // {
+      //   data: this.mainChart['Data2'],
+      //   label: 'Previous',
+      //   ...colors[1]
+      // },
+      // {
+      //   data: this.mainChart['Data3'],
+      //   label: 'BEP',
+      //   ...colors[2]
+      // }
     ];
 
     const plugins = {
@@ -165,7 +165,7 @@ export class DashboardChartsData {
       }
     };
 
-    this.mainChart.type = 'line';
+    this.mainChart.type = 'bar';
     this.mainChart.options = options;
     this.mainChart.data = {
       datasets,

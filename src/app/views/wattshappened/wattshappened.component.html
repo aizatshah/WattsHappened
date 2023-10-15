@@ -1,4 +1,5 @@
 <!-- <app-widgets-dropdown></app-widgets-dropdown> -->
+<!-- <app-charts></app-charts> -->
 <c-card class="mb-4">
   <c-card-body>
     <c-row>
@@ -7,11 +8,11 @@
         <div class="small text-medium-emphasis">January - December 2021</div>
       </c-col>
       <c-col class="d-none d-md-block" sm="7">
-        <button cButton class="float-end" color="primary">
+        <!-- <button cButton class="float-end" color="primary">
           <svg cIcon name="cilCloudDownload"></svg>
-        </button>
+        </button> -->
         <form [formGroup]="trafficRadioGroup">
-          <c-button-group class="float-end me-3" role="group">
+          <!-- <c-button-group class="float-end me-3" role="group">
             <input
               class="btn-check"
               formControlName="trafficRadio"
@@ -53,7 +54,7 @@
               color="secondary"
               variant="outline"
             >Year</label>
-          </c-button-group>
+          </c-button-group> -->
         </form>
       </c-col>
     </c-row>
@@ -66,6 +67,16 @@
     >
       Main chart
     </c-chart>
+    <!-- <c-col xs="12" lg="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          Bar Chart
+        </c-card-header>
+        <c-card-body>
+          <c-chart type="bar" [data]="chartBarData"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col> -->
   </c-card-body>
   <c-card-footer>
     <c-row class="text-center" [md]="5" [xs]="1">
@@ -107,6 +118,8 @@
     </c-row>
   </c-card-footer>
 </c-card>
+
+<!-- <app-charts></app-charts> -->
 
 <!-- <app-widgets-brand [withCharts]="true"></app-widgets-brand> -->
 
