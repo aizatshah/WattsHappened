@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './wattshappened-charts-data';
+import {HttpClient} from '@angular/common/http';
 
 interface IUser {
   name: string;
@@ -22,107 +23,15 @@ interface IUser {
   styleUrls: ['wattshappened.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartsData: DashboardChartsData) {
+  constructor(private chartsData: DashboardChartsData, private http : HttpClient) {
   }
-  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  // chartnum:number = 1;
 
-  // chartnumcount:any = setInterval(()=>{
-  //   this.chartnum++;
-  // },600000)
+  months:any;
+  data:any;
+  chartBarData:any;
+  firstMonth:any;
+  lastMonth:any;
 
-  chartBarData = {
-    labels: [...this.months].slice(0, 7),
-    datasets: [
-      {
-        label: 'GitHub Commits',
-        backgroundColor: '#f87979',
-        data: [40, 20, 12, 39, 17, 42, 65]
-        // data: [40, 20, 12, 39, 17, 42, this.chartnumcount]
-      }
-    ]
-  };
-
-  public users: IUser[] = [
-    {
-      name: 'Yiorgos Avraamu',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Us',
-      usage: 50,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Mastercard',
-      activity: '10 sec ago',
-      avatar: './assets/img/avatars/1.jpg',
-      status: 'success',
-      color: 'success'
-    },
-    {
-      name: 'Avram Tarasios',
-      state: 'Recurring ',
-      registered: 'Jan 1, 2021',
-      country: 'Br',
-      usage: 10,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Visa',
-      activity: '5 minutes ago',
-      avatar: './assets/img/avatars/2.jpg',
-      status: 'danger',
-      color: 'info'
-    },
-    {
-      name: 'Quintin Ed',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'In',
-      usage: 74,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Stripe',
-      activity: '1 hour ago',
-      avatar: './assets/img/avatars/3.jpg',
-      status: 'warning',
-      color: 'warning'
-    },
-    {
-      name: 'Enéas Kwadwo',
-      state: 'Sleep',
-      registered: 'Jan 1, 2021',
-      country: 'Fr',
-      usage: 98,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Paypal',
-      activity: 'Last month',
-      avatar: './assets/img/avatars/4.jpg',
-      status: 'secondary',
-      color: 'danger'
-    },
-    {
-      name: 'Agapetus Tadeáš',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Es',
-      usage: 22,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'ApplePay',
-      activity: 'Last week',
-      avatar: './assets/img/avatars/5.jpg',
-      status: 'success',
-      color: 'primary'
-    },
-    {
-      name: 'Friderik Dávid',
-      state: 'New',
-      registered: 'Jan 1, 2021',
-      country: 'Pl',
-      usage: 43,
-      period: 'Jun 11, 2021 - Jul 10, 2021',
-      payment: 'Amex',
-      activity: 'Yesterday',
-      avatar: './assets/img/avatars/6.jpg',
-      status: 'info',
-      color: 'dark'
-    }
-  ];
   public mainChart: IChartProps = {};
   public chart: Array<IChartProps> = [];
   public trafficRadioGroup = new UntypedFormGroup({
@@ -131,6 +40,27 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCharts();
+    this.http.get('https://wattshappened-54a6d-default-rtdb.asia-southeast1.firebasedatabase.app/.json')
+    .subscribe(Response => {
+ 
+      this.months = JSON.parse(JSON.stringify(Response)).map((data:any) => data.month);
+      this.data = JSON.parse(JSON.stringify(Response)).map((data:any) => data.number);
+
+      console.log(this.months)
+      console.log(this.data)
+      this.firstMonth = this.months[0];
+      this.lastMonth = this.months[this.months.length-1];
+
+      this.chartBarData = {
+        labels: this.months,
+        datasets: [
+          {
+            backgroundColor: '#1A76A9',
+            data: this.data
+          }
+        ]
+      };
+    });
   }
 
   initCharts(): void {

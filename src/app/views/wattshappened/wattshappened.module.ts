@@ -22,6 +22,7 @@ import { DashboardComponent } from './wattshappened.component';
 
 import { WidgetsModule } from '../widgets/widgets.module';
 import { ChartsModule } from '../charts/charts.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { ChartsModule } from '../charts/charts.module';
     AvatarModule,
     TableModule,
     WidgetsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
   ],
   declarations: [DashboardComponent]
 })

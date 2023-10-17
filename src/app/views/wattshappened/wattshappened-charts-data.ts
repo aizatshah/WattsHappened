@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable,OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/utils';
+import {HttpClient} from '@angular/common/http';
 
 export interface IChartProps {
   data?: any;
@@ -15,11 +16,22 @@ export interface IChartProps {
 @Injectable({
   providedIn: 'any'
 })
-export class DashboardChartsData {
-  constructor() {
+export class DashboardChartsData implements OnInit {
+  constructor(private http : HttpClient) {
     this.initMainChart();
   }
-
+  li:any;
+  ngOnInit(): void {
+    this.http.get('https://wattshappened-54a6d-default-rtdb.asia-southeast1.firebasedatabase.app/.json')
+    .subscribe(Response => {
+ 
+      console.log(Response)
+      this.li = JSON.parse(JSON.stringify(Response)).map((data:any) => data.month)
+      // this.lis=JSON.parse(JSON.stringify(Response)).map(Response => Response.month);
+      // month: string[] = JSON.parse
+      // this.lis=this.li.list;
+    });
+  }
   public mainChart: IChartProps = {};
 
   public random(min: number, max: number) {
@@ -145,10 +157,10 @@ export class DashboardChartsData {
         },
         y: {
           beginAtZero: true,
-          max: 250,
+          max: 1000,
           ticks: {
-            maxTicksLimit: 5,
-            stepSize: Math.ceil(250 / 5)
+            maxTicksLimit: Math.ceil(1000 / 10),
+            stepSize: Math.ceil(1000 / 5)
           }
         }
       },

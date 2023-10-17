@@ -35,42 +35,70 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
     'August',
     'September',
     'October',
-    'November',
-    'December',
-    'January',
-    'February',
-    'March',
-    'April'
+    // 'November',
+    // 'December',
+    // 'January',
+    // 'February',
+    // 'March',
+    // 'April'
   ];
   datasets = [
     [{
-      label: 'My First dataset',
+      label: 'usage',
       backgroundColor: 'transparent',
       borderColor: 'rgba(255,255,255,.55)',
       pointBackgroundColor: getStyle('--cui-primary'),
       pointHoverBorderColor: getStyle('--cui-primary'),
-      data: [65, 59, 84, 84, 51, 55, 40]
+      data: [65, 59, 84, 84, 51, 55, 40, 50, 80, 35],
+      // fill: true
     }], [{
-      label: 'My Second dataset',
+      label: 'usage',
       backgroundColor: 'transparent',
       borderColor: 'rgba(255,255,255,.55)',
       pointBackgroundColor: getStyle('--cui-info'),
       pointHoverBorderColor: getStyle('--cui-info'),
-      data: [1, 18, 9, 17, 34, 22, 11]
+      data: [1, 18, 9, 17, 34, 22, 11, 40, 50, 15],
+      // fill: true
     }], [{
-      label: 'My Third dataset',
+      label: 'usage',
       backgroundColor: 'rgba(255,255,255,.2)',
       borderColor: 'rgba(255,255,255,.55)',
       pointBackgroundColor: getStyle('--cui-warning'),
       pointHoverBorderColor: getStyle('--cui-warning'),
-      data: [78, 81, 80, 45, 34, 12, 40],
-      fill: true
+      data: [78, 81, 80, 45, 34, 12, 40, 100, 90, 89],
+      // fill: true
     }], [{
-      label: 'My Fourth dataset',
+      label: 'usage',
       backgroundColor: 'rgba(255,255,255,.2)',
       borderColor: 'rgba(255,255,255,.55)',
-      data: [78, 81, 80, 45, 34, 12, 40, 85, 65, 23, 12, 98, 34, 84, 67, 82],
-      barPercentage: 0.7
+      pointBackgroundColor: getStyle('--cui-warning'),
+      pointHoverBorderColor: getStyle('--cui-warning'),
+      data: [40, 100, 90, 78, 81, 80, 45, 34, 45, 40],
+      // fill: true
+    }],[{
+      label: 'usage',
+      backgroundColor: 'rgba(255,255,255,.2)',
+      borderColor: 'rgba(255,255,255,.55)',
+      pointBackgroundColor: getStyle('--cui-warning'),
+      pointHoverBorderColor: getStyle('--cui-warning'),
+      data: [78, 81, 12, 40, 100, 80, 45, 34, 56, 53],
+      // fill: true
+    }],[{
+      label: 'usage',
+      backgroundColor: 'rgba(255,255,255,.2)',
+      borderColor: 'rgba(255,255,255,.55)',
+      pointBackgroundColor: getStyle('--cui-warning'),
+      pointHoverBorderColor: getStyle('--cui-warning'),
+      data: [40, 54, 45, 80, 45, 34, 12, 40, 70, 100],
+      // fill: true
+    }],[{
+      label: 'usage',
+      backgroundColor: 'rgba(255,255,255,.2)',
+      borderColor: 'rgba(255,255,255,.55)',
+      pointBackgroundColor: getStyle('--cui-warning'),
+      pointHoverBorderColor: getStyle('--cui-warning'),
+      data: [34, 12, 40, 54, 45, 80, 45, 50, 60, 90],
+      // fill: true
     }]
   ];
   optionsDefault = {
@@ -125,9 +153,9 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
   }
 
   setData() {
-    for (let idx = 0; idx < 4; idx++) {
+    for (let idx = 0; idx < 8; idx++) {
       this.data[idx] = {
-        labels: idx < 3 ? this.labels.slice(0, 7) : this.labels,
+        labels: idx < 8 ? this.labels.slice(0, 12) : this.labels,
         datasets: this.datasets[idx]
       };
     }

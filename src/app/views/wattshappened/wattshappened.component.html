@@ -4,13 +4,10 @@
   <c-card-body>
     <c-row>
       <c-col sm="5">
-        <h4 class="card-title mb-0" id="traffic">Traffic</h4>
-        <div class="small text-medium-emphasis">January - December 2021</div>
+        <h4 class="card-title mb-0" id="traffic">Bills History (RM)</h4>
+        <div class="small text-medium-emphasis">{{firstMonth}} - {{lastMonth}}</div>
       </c-col>
       <c-col class="d-none d-md-block" sm="7">
-        <!-- <button cButton class="float-end" color="primary">
-          <svg cIcon name="cilCloudDownload"></svg>
-        </button> -->
         <form [formGroup]="trafficRadioGroup">
           <!-- <c-button-group class="float-end me-3" role="group">
             <input
@@ -59,7 +56,7 @@
       </c-col>
     </c-row>
     <c-chart
-      [data]="mainChart.data"
+      [data]="chartBarData"
       [height]="300"
       [ngStyle]="{ 'marginTop.px': 40 }"
       [options]="mainChart.options"
@@ -78,7 +75,7 @@
       </c-card>
     </c-col> -->
   </c-card-body>
-  <c-card-footer>
+  <!-- <c-card-footer>
     <c-row class="text-center" [md]="5" [xs]="1">
       <c-col class="mb-sm-2 mb-0">
         <div class="text-medium-emphasis">Visits</div>
@@ -116,7 +113,7 @@
         </c-progress>
       </c-col>
     </c-row>
-  </c-card-footer>
+  </c-card-footer> -->
 </c-card>
 
 <!-- <app-charts></app-charts> -->
